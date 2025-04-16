@@ -12,7 +12,9 @@ def main() -> None:
     for nickname, player_data in data.items():
         race_obj = Race.objects.get_or_create(
             name=player_data["race"]["name"],
-            defaults={"description": player_data["race"].get("description", "")}
+            defaults={
+                "description": player_data["race"].get("description", "")
+            }
         )
 
         for skill in player_data["race"].get("skills", []):
